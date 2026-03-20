@@ -38,13 +38,7 @@ class apb_scoreboard extends uvm_scoreboard;
         apb_seq_item  exp_pkt, rcvd_pkt;
         super.run_phase(phase);
         
- /*       forever begin
-            wait(exp_seq_item_q.size() !=0 && rcvd_seq_item_q.size() !=0);
-                exp_pkt = exp_seq_item_q.pop_front();
-                rcvd_pkt = rcvd_seq_item_q.pop_front();
-                compare_pkt(exp_pkt, rcvd_pkt);                
-        end  
-*/      
+     
     endtask: run_phase
     
     // driver to scoreboard write function

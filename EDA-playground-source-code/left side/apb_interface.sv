@@ -34,10 +34,10 @@ interface apb_interface (input logic PCLK);
     // Defines signal access and direction
   
     // Master Modport: Used by Driver
-    modport master (
+   /* modport master (
         clocking cb,       // Use clocking block for drive/sample
         output   PRESETn   // Reset is usually controlled by Test directly or via interface task
-    );
+     );*/
 
     
 

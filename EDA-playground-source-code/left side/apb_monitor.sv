@@ -14,7 +14,7 @@ class apb_monitor extends uvm_monitor;
     // analysis port instance
   	uvm_analysis_port#(apb_seq_item)    mntr2scb;         // analysis port to be connected with scoreboard
         
-    
+  
     // constructor function
     function new(string name="apb_monitor", uvm_component parent);
         super.new(name, parent);
@@ -52,10 +52,10 @@ class apb_monitor extends uvm_monitor;
         
         forever begin
             // -----------------------------------------------------------------
-            // Phase 1: Look for Setup Phase (Wait until PENABLE is LOW)
+            // Phase 1: Look for Setup Phase (Wait until PSEL=1 and PENABLE=0)
             // -----------------------------------------------------------------
             // This step is critical to prevent double sampling!
-            // If PENABLE is still 1 (residue from the previous transaction), 
+          // If PENABLE is still 1 (residue from the previous transaction), 
             // the loop will hold here and will NOT sample.
             do begin
                 @(apb_intf_mntr.cb);

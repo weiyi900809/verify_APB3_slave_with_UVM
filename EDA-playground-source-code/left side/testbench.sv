@@ -14,24 +14,24 @@ module tb_top();
 
     
     // clock declaration
-    bit clk_100MHz;
+    bit clk;
 
     // interface declaration
-    apb_interface   apb_intf(clk_100MHz);
+    apb_interface   apb_intf(clk);
     
   
     
     // 100MHz clock generation block
     initial begin
         forever begin
-            #((0.5/`APB_CLK_FREQ_MHZ) * 1s) clk_100MHz = ~clk_100MHz;
+            #((0.5 / `APB_CLK_FREQ_MHZ) * 1us) clk = ~clk;
         end
     end
       
     // instantiation of DUT
     apb_slave  DUT (       
                         // IO ports
-                        .pclk(clk_100MHz),                          // 100MHz clock
+                        .pclk(clk),                          // 100MHz clock
       					.presetn(apb_intf.PRESETn),             // Active low Reset
                         .psel(apb_intf.PSEL),                   // Select Signal
                         .penable(apb_intf.PENABLE),             // Enable Signal
@@ -51,7 +51,7 @@ module tb_top();
       	uvm_config_db#(virtual apb_interface)::set(null, "*", "apb_interface", apb_intf);
       	
         // start the test
-      	run_test("apb_reg_por_read_test");
+      	run_test("apb_rand_reg_write_read_test");
     end
     initial begin
       $dumpfile("dump.vcd");

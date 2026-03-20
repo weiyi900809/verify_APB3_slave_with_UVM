@@ -17,11 +17,11 @@ class apb_rd_sequence extends apb_base_sequence;
     virtual task body();
 //        $display("RD_SEQ:: addr:%0h", addr);
         if(rand_addr) begin  // random read 
-            `uvm_do_with(item, {item.op_type == 0;})
+            `uvm_do_with(item, {item.op_type == READ;})
         end
         else begin  // directed read
             `uvm_do_with(item, {
-                                item.op_type == 0;
+                                item.op_type == READ;
                                 item.ADDR == local::addr;
                          })
         end
