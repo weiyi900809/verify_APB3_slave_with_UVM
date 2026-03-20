@@ -21,12 +21,6 @@ module apb_slave (
     // Address register
     reg [`ADDR_WIDTH -1:0] addr_reg;
 
-	// FSM state
-    localparam IDLE   = 2'b00;
-    localparam SETUP  = 2'b01;
-    localparam ACCESS = 2'b10;
-
-    reg [1:0] current_state;
 	
 	
     // Reset and initialization logic
